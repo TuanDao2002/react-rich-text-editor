@@ -59,6 +59,12 @@ const App = () => {
 			xhr.addEventListener("load", () => {
 				var data = JSON.parse(xhr.responseText);
 
+				if (!data.image) {
+					alert(data.msg);
+					reject();
+					return;
+				}
+
 				// Magic Happens Here
 				console.log(data);
 				var response = { data: { link: data.image.src } };
@@ -128,8 +134,8 @@ const App = () => {
 						inputAccept: "image/gif,image/jpeg,image/jpg,image/png,image/svg",
 						alt: { present: false, mandatory: false },
 						defaultSize: {
-							height: "auto",
-							width: "auto",
+							height: "300",
+							width: "300",
 						},
 					},
 				}}
